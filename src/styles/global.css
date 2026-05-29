@@ -1,0 +1,495 @@
+/* === Recursos del Rey Rojo — Estilos globales === */
+
+/* Google Fonts: Bebas Neue (display) + Inter (body) */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap");
+
+/* === Tema oscuro (por defecto) === */
+:root {
+  --bg: #0a0a0a;
+  --bg-suave: #141414;
+  --border: #2a2a2a;
+  --text-muted: #6b6b6b;
+  --text-secondary: #b0b0b0;
+  --text-primary: #f5f5f5;
+  --rojo: #c0392b;
+  --rojo-hover: #a01d1d;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  /* transicion suave al cambiar tema */
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* === Tema claro === */
+[data-theme="light"] {
+  --bg: #faf8f5;
+  --bg-suave: #f0ede8;
+  --border: #d9d4cc;
+  --text-muted: #8a857e;
+  --text-secondary: #5a554d;
+  --text-primary: #1a1815;
+  /* rojo y rojo-hover se mantienen igual en ambos temas */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: var(--theme-transition);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: var(--rojo);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--rojo-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* === Utilidades === */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* === Toggle de tema === */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+.theme-toggle .icon-sun { display: block; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* === Header minimalista === */
+.site-header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: var(--theme-transition);
+}
+.site-header .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-logo {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  transition: var(--theme-transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.header-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+.site-logo:hover {
+  color: var(--rojo);
+}
+.site-header nav {
+  display: flex;
+  align-items: center;
+}
+.site-nav a {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: var(--theme-transition);
+}
+.site-nav a:hover {
+  color: var(--text-primary);
+}
+
+/* === Footer === */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  margin-top: 4rem;
+  text-align: center;
+  transition: var(--theme-transition);
+}
+.site-footer p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.footer-links {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+/* === Aviso sin cookies === */
+.cookie-notice {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  max-width: 320px;
+  background: var(--bg-suave);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  transition: opacity 0.4s, transform 0.4s, var(--theme-transition);
+}
+.cookie-notice.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+.cookie-notice p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.cookie-notice p strong {
+  color: var(--text-primary);
+}
+.cookie-notice-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.cookie-notice-buttons button {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.cookie-notice-buttons button:hover {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: #f5f5f5;
+}
+.cookie-notice-buttons button.primary {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: #f5f5f5;
+}
+.cookie-notice-buttons button.primary:hover {
+  background: var(--rojo-hover);
+}
+
+/* === Blog: listado === */
+.blog-list {
+  padding: 3rem 0;
+}
+.blog-list h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.post-card {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+  transition: var(--theme-transition);
+}
+.post-card:first-of-type {
+  border-top: 1px solid var(--border);
+}
+.post-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+.post-card h2 a {
+  color: var(--text-primary);
+}
+.post-card h2 a:hover {
+  color: var(--rojo);
+}
+.post-card time {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.post-card p {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* === Blog: articulo individual === */
+.article {
+  padding: 3rem 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.article header {
+  margin-bottom: 2rem;
+}
+.article h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+.article time {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.article .tags {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.article .tags span {
+  background: var(--bg-suave);
+  color: var(--text-secondary);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.article .content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.article .content p {
+  margin-bottom: 1.2rem;
+}
+.article .content h2 {
+  font-size: 1.8rem;
+  margin: 2rem 0 0.75rem;
+}
+.article .content h3 {
+  font-size: 1.4rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.article .content ul,
+.article .content ol {
+  margin: 0 0 1.2rem 1.5rem;
+}
+.article .content li {
+  margin-bottom: 0.4rem;
+}
+.article .content blockquote {
+  border-left: 3px solid var(--rojo);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+.article .content strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* CTA al final del articulo */
+.article-cta {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--bg-suave);
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: var(--theme-transition);
+}
+.article-cta h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.article-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+.article-cta a {
+  display: inline-block;
+  background: var(--rojo);
+  color: #f5f5f5;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.2s;
+}
+.article-cta a:hover {
+  background: var(--rojo-hover);
+}
+
+/* === Paginas legales === */
+.legal-page {
+  padding: 3rem 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.legal-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.legal-page h2 {
+  font-size: 1.4rem;
+  margin: 2rem 0 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+.legal-page p,
+.legal-page li {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+.legal-page ul {
+  margin-left: 1.5rem;
+}
+
+/* === Pagina de gracias === */
+.thanks-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+.thanks-page h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.thanks-page p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* === Errores de formulario === */
+.form-error {
+  color: var(--rojo);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+.form-error.visible {
+  display: block;
+}
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+}
+.form-success.visible {
+  display: block;
+}
+.form-success h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 1rem 0;
+  }
+  .site-logo {
+    font-size: 1rem;
+    gap: 0.5rem;
+  }
+  .site-nav a {
+    font-size: 0.75rem;
+  }
+  .article h1 {
+    font-size: 2rem;
+  }
+  .blog-list h1 {
+    font-size: 2.2rem;
+  }
+  .post-card h2 {
+    font-size: 1.4rem;
+  }
+  .footer-links {
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+  }
+  .footer-links a {
+    font-size: 0.75rem;
+  }
+  .cookie-notice {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
+  }
+}

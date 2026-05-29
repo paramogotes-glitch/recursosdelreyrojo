@@ -1,0 +1,4 @@
+# Redirecciones desde el antiguo WordPress
+# Si habia posts con URLs especificas, anadirlas aqui:
+# /blog/viejo-post /blog/nuevo-post 301
+# /contacto / 301

@@ -1,0 +1,897 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="landing">
+
+    <!-- ============================================================ -->
+    <!-- FASE 0 — Vista inicial: solo headline + botones             -->
+    <!-- ============================================================ -->
+
+    <h1 class="main-headline">
+      Si supieras lo que le cuesta a tu cliente no contratarte, te
+      dar&iacute;a verg&uuml;enza no venderte.
+    </h1>
+
+    <p class="main-subtitle">
+      &hellip;y no se trata de ser pesado. Se trata de entender que tu
+      soluci&oacute;n le ahorra dinero, tiempo o dolores de cabeza. Y si
+      no se lo dices t&uacute;, se lo dir&aacute; otro con la mitad de tu
+      talento.
+    </p>
+
+    <p class="body-text">
+      De estas cosas y algo m&aacute;s hablo a diario en mi reino. Si
+      quieres escuchar lo que este delirante Rey suele decir pulsa
+      aqu&iacute; abajo para entregar un peque&ntilde;o Tributo Real.
+    </p>
+
+    <p class="dialogue-line">&mdash;&iquest;Me est&aacute;s pidiendo el email?</p>
+
+    <button class="btn-primary" id="btn-fase0-form">
+      &mdash;Si listillo, pulsa aqu&iacute; para dejar tu preciado email
+    </button>
+
+    <!-- ============================================================ -->
+    <!-- CAJA DE CONVERSIÓN 1 (Botón 1 de Fase 0)                    -->
+    <!-- ============================================================ -->
+    <div class="form-block form-collapsed" id="form-block-1">
+      <div class="form-wrapper">
+        <h2>
+          Una vez dentro recibir&aacute;s <strong>El Edicto Real</strong> cada
+          ma&ntilde;ana. Sin coste. Sin tonter&iacute;as (solo las justas
+          y necesarias).
+        </h2>
+
+        <form id="brevo-form-1" class="subscribe-form">
+          <div class="input-group">
+            <input
+              type="email"
+              id="email-1"
+              name="email"
+              placeholder="Escribe aqu&iacute; tu email"
+              required
+              autocomplete="email"
+            />
+            <button type="submit">Entrar al reino</button>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="privacy-1" name="privacy" required />
+            <label for="privacy-1">
+              Acepto la
+              <a href="/privacidad">pol&iacute;tica de privacidad</a> de este Rey
+              y recibir cada d&iacute;a El Edicto Real
+            </label>
+          </div>
+          <p class="form-error" id="form-error-1"></p>
+        </form>
+
+        <div class="form-success" id="form-success-1">
+          <h3>Revisa tu email</h3>
+          <p>
+            Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+          </p>
+        </div>
+
+        <p class="form-note">
+          Esta suscripci&oacute;n es gratis, darse de baja tambi&eacute;n.
+        </p>
+      </div>
+    </div>
+
+    <button class="btn-secondary" id="btn-fase0-texto">
+      &mdash;&iquest;Y si me arrepiento de entrar al reino?
+    </button>
+
+    <!-- ============================================================ -->
+    <!-- CUERPO DE TEXTO 1 (Botón 2 de Fase 0)                       -->
+    <!-- ============================================================ -->
+    <div class="text-block form-collapsed" id="text-block-1">
+
+      <h2 class="regret-headline">
+        Te arrepentir&aacute;s, pero de haber tardado tanto.
+      </h2>
+
+      <p class="body-text">
+        En mi reino no hay cadenas. Si entras y el tono te escuece, te
+        largas. Tan sencillo como eso. Pulsa el bot&oacute;n de arriba,
+        prueba el veneno y, si no te gusta, te curas t&uacute; mismo
+        d&aacute;ndote de baja en un segundo.
+      </p>
+
+      <p class="body-text">
+        Ver&aacute;s, hay un tipo de persona que no encaja en
+        ning&uacute;n sitio.
+      </p>
+
+      <p class="body-text">
+        No encaja en el mundo corporativo porque le da urticaria el lenguaje
+        de consultor caro &mdash;palabras que suenan importantes y no dicen
+        nada, frases que repiten en todas las reuniones sin que nadie sepa
+        qu&eacute; significan&mdash;. No encaja con los gur&uacute;s de
+        internet porque les huele el humo a kil&oacute;metros. No encaja con
+        los que presumen de facturaci&oacute;n en redes sociales porque
+        intuye &mdash;con raz&oacute;n&mdash; que la mitad es mentira y la
+        otra mitad es gente que factura mucho y gana poco.
+      </p>
+
+      <p class="body-text">
+        Ese tipo de persona suele ser la que de verdad sabe hacer algo.
+      </p>
+
+      <p class="body-text">
+        Pero hay un problema. Un problema gordo. Y es que saber hacer no
+        basta. Si nadie te ve, si no sabes explicar lo que vales, si cada
+        vez que intentas venderte te da la sensaci&oacute;n de que
+        est&aacute;s mendigando&hellip; <strong>el mercado te ignora.</strong> Y mientras
+        tanto, el vendeh&uacute;mos de turno &mdash;ese que sabe menos que
+        t&uacute; pero se explica mejor, se proyecta mejor, se vende
+        mejor&mdash; se lleva el gato al agua.
+      </p>
+
+      <p class="body-text">
+        Puede que seas bueno en lo tuyo &mdash;muy bueno&mdash; pero cada
+        vez que intentas explicar lo que haces, o suenas como un bot
+        corporativo o te quedas en blanco. Y para colmo, flipas en colores
+        porque ChatGPT se explica mejor que t&uacute;, pero no como
+        t&uacute;.
+      </p>
+
+      <p class="body-text">
+        O igual ya tienes negocio y lo que te quema es otra cosa. No es que
+        no sepas venderte &mdash;es que est&aacute;s atrapado. Si t&uacute;
+        no haces algo, no se hace. Facturas, s&iacute;, pero a costa de 60
+        horas semanales, madrugadas mirando el techo y la certeza de que dos
+        meses malos te mandan a la lona. Y mientras tanto ves a otros
+        &mdash;con menos equipo, menos experiencia y menos huevos&mdash;
+        escalar sin despeinarse porque montaron una estructura que vende por
+        ellos.
+      </p>
+
+      <p class="body-text">
+        Ves a competidores con la mitad de tu talento facturando el triple y
+        te hierve la sangre. Y lo peor: una parte de ti sigue creyendo que
+        vender no es lo tuyo, que el buen trabajo se vende solo.
+      </p>
+
+      <p class="body-text">
+        Pero lamento decirte que <strong>no se vende solo. Nunca se ha vendido solo.</strong>
+        Vender no es la parte fea del trabajo: es la parte que convierte tu
+        trabajo en algo que existe fuera de tu cabeza.
+      </p>
+
+      <p class="body-text">
+        Puedes describir tu metodolog&iacute;a con precisi&oacute;n
+        quir&uacute;rgica y que al cliente le d&eacute; igual. Pero si le
+        pones en palabras lo que lleva meses sintiendo sin saber decirlo, ya
+        has ganado antes de haberle vendido nada. La gente no compra porque
+        entiende lo que haces. <strong>Compra porque nota que t&uacute; le entiendes
+        a &eacute;l.</strong>
+      </p>
+
+      <p class="body-text">
+        Si esto tiene sentido para ti, he creado un PDF donde
+        aprender&aacute;s:
+      </p>
+
+      <ul class="benefits">
+        <li>
+          C&oacute;mo presentarte sin que el otro ponga cara de
+          p&oacute;ker, asienta, sonr&iacute;a y se olvide de ti antes
+          de que termines la frase.
+        </li>
+        <li>
+          El n&uacute;mero exacto que tu cliente pierde por no contratarte
+          &mdash; y c&oacute;mo pon&eacute;rselo delante sin parecer un
+          buitre rastrero.
+        </li>
+        <li>
+          Por qu&eacute; oler a desesperaci&oacute;n en una llamada repele
+          &mdash; y la t&eacute;cnica de 3 segundos que lo invierte sin
+          fingir nada.
+        </li>
+        <li>
+          Las palabras exactas que usa tu cliente &mdash; sacadas de sus
+          emails, no de tu cabeza &mdash; y c&oacute;mo usarlas para que te
+          lea y diga &laquo;hostia, este t&iacute;o me conoce&raquo;.
+        </li>
+        <li>
+          La cl&aacute;usula de salida que anula el 90 % del miedo a comprar
+          y te hace vender m&aacute;s sin tocar el precio.
+        </li>
+      </ul>
+
+      <p class="body-text">
+        Son 5 p&aacute;ginas. Se lee en 10 minutos. Si aplicas una sola de
+        las cinco, ya habr&aacute; merecido la pena.
+      </p>
+
+      <p class="body-text">
+        Deja tu email y te lo mando ahora mismo.
+      </p>
+
+      <!-- Botones de Fase 1 -->
+      <button class="btn-primary" id="btn-fase1-form">
+        S&iacute;, perfecto, para cuando me encierre en el ba&ntilde;o
+      </button>
+
+      <!-- Caja de Conversión 2 (Botón 1 de Fase 1) -->
+      <div class="form-block form-collapsed" id="form-block-2">
+        <div class="form-wrapper">
+          <p class="form-lead">
+            Al dejar tu email te mando el PDF y entras en mi reino. Eso
+            significa recibir un email cada ma&ntilde;ana con alguna movida
+            Real para plantarle cara al mercado.
+          </p>
+
+          <p class="form-lead">Hay quien dice que generan adicci&oacute;n. Yo lo llamo&hellip;</p>
+
+          <h2 class="form-title-edicto">El Edicto Real</h2>
+
+          <form id="brevo-form-2" class="subscribe-form">
+            <div class="input-group">
+              <input
+                type="email"
+                id="email-2"
+                name="email"
+                placeholder="Escribe aqu&iacute; tu email"
+                required
+                autocomplete="email"
+              />
+              <button type="submit">Entrar en la corte</button>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="privacy-2" name="privacy" required />
+              <label for="privacy-2">
+                Acepto la
+                <a href="/privacidad">pol&iacute;tica de privacidad</a> de
+                este Rey y recibir cada d&iacute;a El Edicto Real
+              </label>
+            </div>
+            <p class="form-error" id="form-error-2"></p>
+          </form>
+
+          <div class="form-success" id="form-success-2">
+            <h3>Revisa tu email</h3>
+            <p>
+              Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+            </p>
+          </div>
+
+          <p class="form-note">
+            Esta suscripci&oacute;n es gratis, darse de baja
+            tambi&eacute;n.
+          </p>
+        </div>
+      </div>
+
+      <button class="btn-secondary" id="btn-fase1-texto">
+        Est&aacute;s de co&ntilde;a, si no s&eacute; qui&eacute;n eres
+      </button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CUERPO DE TEXTO 2 (Botón 2 de Fase 1)                       -->
+    <!-- ============================================================ -->
+    <div class="text-block form-collapsed" id="text-block-2">
+
+      <h2 class="regret-headline">
+        Vale. Yo tampoco entrar&iacute;a a un castillo
+        <strong>oscuro y tenebroso</strong>.
+      </h2>
+
+      <p class="body-text">
+        Me llamo Rey. Soy cubano, emigrante, medio tartamudo. Bueno, en
+        realidad no tanto, pero me, me, me trabo a veces, solo a veces.
+      </p>
+
+      <p class="body-text">
+        Llegu&eacute; a Barcelona de turismo y me qued&eacute;. Sin
+        papeles, sin contactos, sin un maldito portfolio y con menos estatus
+        que una paloma de Plaza Catalu&ntilde;a. Y aun as&iacute;,
+        mont&eacute; un negocio escribiendo y aqu&iacute; estoy viviendo de
+        ello.
+      </p>
+
+      <p class="body-text">
+        No te cuento esto para que me aplaudas. Eso me da igual, las
+        palmaditas no las acepta el banco (cr&eacute;eme, ya he probado).
+      </p>
+
+      <p class="body-text">
+        Te lo digo para que entiendas que si un tipo con semejante desventaja
+        social pudo montar un negocio unipersonal escribiendo correos,
+        cualquiera puede. <strong>Incluso t&uacute;.</strong>
+      </p>
+
+      <p class="body-text">
+        Solo tienes que aprender a traducir lo que sabes, a comunicar lo que
+        vendes, a proyectar como quieres ser percibido.
+      </p>
+
+      <div class="dialogue">
+        <p class="body-text">
+          &mdash; Seguro que usas IA.
+        </p>
+        <p class="body-text">
+          &mdash; Claro que la uso. Pero no como pretenden venderte el 99 %
+          de los reinos aleda&ntilde;os. La IA te puede ayudar mucho, pero
+          no te da experiencia ni criterio. Eso solo se gana con el tiempo.
+          Haciendo. Fallando. Y volviendo a hacer.
+        </p>
+      </div>
+
+      <p class="body-text">
+        Dicho esto, hay un atajo leg&iacute;timo:
+        <strong>aprender de las hostias de otro.</strong> Eso es lo que hace
+        un buen mentor, un buen libro, una buena newsletter. No te ahorra
+        todas las hostias &mdash;necesitas unas cuantas para que el
+        conocimiento se te pegue a los huesos&mdash; pero te ahorra las que
+        ya se llev&oacute; otro. Y eso estrecha el camino.
+      </p>
+
+      <p class="body-text">
+        Raz&oacute;n por la cual he creado este reino con un foso alrededor
+        y un puente para los que quieran andar conmigo y compartir
+        &laquo;Los delirios de la corte&raquo;.
+      </p>
+
+      <p class="body-text">
+        Hay gente a la que le encanta. Otros me bloquean en el primer
+        p&aacute;rrafo. Ambos tienen raz&oacute;n.
+      </p>
+
+      <p class="body-text">
+        No es para todo el mundo. Ni tiene por qu&eacute; serlo.
+      </p>
+
+      <p class="body-text">
+        Cuando el puente est&aacute; abajo &mdash;como ahora&mdash;
+        cualquiera puede entrar, pero cuando lo alce, solo el que ya
+        est&aacute; adentro puede disfrutar del Banquete Real.
+      </p>
+
+      <p class="body-text">
+        Cada d&iacute;a env&iacute;o un email contando algo. No hago
+        m&aacute;s. Tampoco hace falta.
+      </p>
+
+      <!-- Botón final de Fase 2 -->
+      <button class="btn-primary" id="btn-fase2-form">
+        Si quieres entrar, aqu&iacute; est&aacute; la puerta
+      </button>
+
+      <!-- Caja de Conversión 3 (Botón final) -->
+      <div class="form-block form-collapsed" id="form-block-3">
+        <div class="form-wrapper">
+          <h2>
+            Una vez dentro recibir&aacute;s <strong>El Edicto Real</strong> cada
+            ma&ntilde;ana. Sin coste. Sin tonter&iacute;as (solo las justas
+            y necesarias).
+          </h2>
+
+          <form id="brevo-form-3" class="subscribe-form">
+            <div class="input-group">
+              <input
+                type="email"
+                id="email-3"
+                name="email"
+                placeholder="Escribe aqu&iacute; tu email"
+                required
+                autocomplete="email"
+              />
+              <button type="submit">Entrar en la corte</button>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="privacy-3" name="privacy" required />
+              <label for="privacy-3">
+                Acepto la
+                <a href="/privacidad">pol&iacute;tica de privacidad</a> de
+                este Rey y recibir cada d&iacute;a El Edicto Real
+              </label>
+            </div>
+            <p class="form-error" id="form-error-3"></p>
+          </form>
+
+          <div class="form-success" id="form-success-3">
+            <h3>Revisa tu email</h3>
+            <p>
+              Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+            </p>
+          </div>
+
+          <p class="form-note">
+            Esta suscripci&oacute;n es gratis (de momento), darse de baja
+            tambi&eacute;n.
+          </p>
+        </div>
+      </div>
+
+      <p class="closing-line">
+        Si te gusta, te quedas. Si no, te vas. Sin resentimientos.
+      </p>
+
+      <p class="signature">Rey</p>
+
+      <p class="ps">
+        PD: Cada Edicto que llega a tu bandeja es &uacute;nico. Lo que te
+        mande un d&iacute;a, no vuelve. No hay segunda oportunidad.
+      </p>
+    </div>
+
+  </section>
+</Layout>
+
+<style>
+  /* === Layout: columna unica === */
+  .landing {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  /* === Tipografia === */
+  .body-text {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .body-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* === Titular principal === */
+  .main-headline {
+    font-family: var(--font-body);
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .main-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+  }
+
+  /* === Linea de dialogo === */
+  .dialogue-line {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  /* === Par de botones === */
+  .btn-pair {
+    margin-bottom: 0;
+  }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    background: var(--rojo);
+    color: #f5f5f5;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+  }
+
+  .btn-primary:hover {
+    background: var(--rojo-hover);
+    transform: scale(1.03);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    display: block;
+    width: 100%;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+  }
+
+  .btn-secondary:hover {
+    color: var(--rojo);
+    border-color: var(--rojo);
+    border-width: 2px;
+    padding: calc(0.75rem - 1px) calc(1.5rem - 1px);
+  }
+
+  /* === Beneficios (bullets) === */
+  .benefits {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .benefits li {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .benefits li::before {
+    content: "\2192";
+    position: absolute;
+    left: 0;
+    color: var(--rojo);
+    font-weight: 600;
+  }
+
+  /* === Bloques expandibles (formularios y texto) === */
+  .form-collapsed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.4s ease;
+    margin: 0;
+  }
+
+  .form-expanded {
+    max-height: 9999px;
+    opacity: 1;
+    overflow: visible;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* === Caja de conversion === */
+  .form-wrapper {
+    background: var(--bg-suave);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .form-wrapper h2 {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1.375rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-wrapper h2 strong {
+    font-weight: 700;
+  }
+
+  .form-lead {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+
+  .form-title-edicto {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 0.9;
+    color: var(--rojo);
+    margin: 1rem 0 0.75rem !important;
+  }
+
+  .form-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .input-group {
+    display: flex;
+    margin-top: 1rem;
+  }
+
+  .input-group input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-right: none;
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input-group input:focus {
+    border-color: var(--rojo);
+  }
+
+  .input-group button {
+    background: var(--rojo);
+    color: #f5f5f5;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .input-group button:hover {
+    background: var(--rojo-hover);
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .checkbox-group input {
+    margin-top: 0.25rem;
+    accent-color: var(--rojo);
+  }
+
+  .checkbox-group label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .checkbox-group label a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+  }
+
+  .form-note {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .form-error {
+    color: var(--rojo);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    display: none;
+  }
+
+  .form-error.visible {
+    display: block;
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .form-success.visible {
+    display: block;
+  }
+
+  .form-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  /* === Titular de arrepentimiento === */
+  .regret-headline {
+    font-family: var(--font-body);
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .dialogue {
+    margin: 1rem 0;
+  }
+
+  .dialogue .body-text {
+    padding-left: 0;
+  }
+
+  /* === Cierre === */
+  .closing-line {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  .signature {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .ps {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .landing {
+      padding: 2.5rem 1.25rem 6rem;
+    }
+
+    .main-headline {
+      font-size: 2rem;
+    }
+
+    .main-subtitle {
+      font-size: 1.15rem;
+    }
+
+    .regret-headline {
+      font-size: 1.5rem;
+    }
+
+    .form-title-edicto {
+      font-size: 2.2rem;
+    }
+
+    .btn-primary {
+      font-size: 1.15rem;
+      padding: 0.85rem 1.5rem;
+    }
+
+    .input-group {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .input-group input {
+      border-right: 1px solid var(--border);
+    }
+
+    .input-group button {
+      width: 100%;
+    }
+
+    .form-wrapper {
+      padding: 1.5rem;
+    }
+
+    .form-wrapper h2 {
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  // === Utilidad: expandir un bloque ===
+  function expandBlock(blockId: string) {
+    const block = document.getElementById(blockId);
+    if (block) {
+      block.classList.remove("form-collapsed");
+      block.classList.add("form-expanded");
+    }
+  }
+
+  // === Utilidad: ocultar un elemento ===
+  function hideElement(elId: string) {
+    const el = document.getElementById(elId);
+    if (el) el.style.display = "none";
+  }
+
+  // === Utilidad: ocultar un par de botones ===
+  function hideBtnPair(pairId: string) {
+    const pair = document.getElementById(pairId);
+    if (pair) pair.style.display = "none";
+  }
+
+  // === Utilidad: validacion de formulario ===
+  function setupForm(formId: string, emailId: string, privacyId: string, errorId: string, successId: string) {
+    const form = document.getElementById(formId) as HTMLFormElement | null;
+    const errorEl = document.getElementById(errorId) as HTMLElement | null;
+    const successEl = document.getElementById(successId) as HTMLElement | null;
+
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = (document.getElementById(emailId) as HTMLInputElement).value.trim();
+      const privacy = (document.getElementById(privacyId) as HTMLInputElement).checked;
+
+      if (!email) {
+        if (errorEl) {
+          errorEl.textContent = "Escribe tu email.";
+          errorEl.classList.add("visible");
+        }
+        return;
+      }
+      if (!privacy) {
+        if (errorEl) {
+          errorEl.textContent = "Debes aceptar la política de privacidad.";
+          errorEl.classList.add("visible");
+        }
+        return;
+      }
+
+      if (errorEl) errorEl.classList.remove("visible");
+      form.style.display = "none";
+      const parent = form.parentElement;
+      const checkboxes = parent?.querySelector(".checkbox-group") as HTMLElement | null;
+      if (checkboxes) checkboxes.style.display = "none";
+      if (successEl) successEl.classList.add("visible");
+    });
+  }
+
+  // ================================================================
+  // FASE 0: Boton 1 → Form 1 | Boton 2 → Texto 1
+  // ================================================================
+  document.getElementById("btn-fase0-form")?.addEventListener("click", () => {
+    hideElement("btn-fase0-form");
+    expandBlock("form-block-1");
+    document.getElementById("email-1")?.focus();
+  });
+
+  document.getElementById("btn-fase0-texto")?.addEventListener("click", () => {
+    hideElement("btn-fase0-texto");
+    expandBlock("text-block-1");
+  });
+
+  setupForm("brevo-form-1", "email-1", "privacy-1", "form-error-1", "form-success-1");
+
+  // ================================================================
+  // FASE 1: Boton 3 → Form 2 | Boton 4 → Texto 2
+  // ================================================================
+  document.getElementById("btn-fase1-form")?.addEventListener("click", () => {
+    hideElement("btn-fase1-form");
+    expandBlock("form-block-2");
+    document.getElementById("email-2")?.focus();
+  });
+
+  document.getElementById("btn-fase1-texto")?.addEventListener("click", () => {
+    hideElement("btn-fase1-texto");
+    expandBlock("text-block-2");
+  });
+
+  setupForm("brevo-form-2", "email-2", "privacy-2", "form-error-2", "form-success-2");
+
+  // ================================================================
+  // FASE 2: Boton final → Form 3
+  // ================================================================
+  document.getElementById("btn-fase2-form")?.addEventListener("click", () => {
+    hideElement("btn-fase2-form");
+    expandBlock("form-block-3");
+    document.getElementById("email-3")?.focus();
+  });
+
+  setupForm("brevo-form-3", "email-3", "privacy-3", "form-error-3", "form-success-3");
+</script>

@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, tags } = post.data;
+---
+
+<Layout>
+  <article class="article">
+    <header>
+      <h1>{title}</h1>
+      <time datetime={pubDate.toISOString()}>
+        {pubDate.toLocaleDateString("es-ES", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </time>
+      {tags.length > 0 && (
+        <div class="tags">
+          {tags.map((tag: string) => <span>{tag}</span>)}
+        </div>
+      )}
+    </header>
+
+    <div class="content">
+      {post.body}
+    </div>
+
+    <div class="article-cta">
+      <h3>No te pierdas ni un Edicto</h3>
+      <p>
+        Esto es una muestra de lo que recibes cada mañana. Copywriting, persuasion
+        y negocio digital sin humo, directo a tu bandeja.
+      </p>
+      <a href="/#suscribirse">Suscribirse gratis</a>
+    </div>
+  </article>
+</Layout>

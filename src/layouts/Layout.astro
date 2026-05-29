@@ -1,0 +1,98 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="El Edicto Real — Newsletter diaria de copywriting, persuasion y negocio digital. Recursos del Rey Rojo." />
+    <title>El Edicto Real | Recursos del Rey Rojo</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Bloquea el flash de tema incorrecto antes de que pinte nada -->
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = saved || (prefersDark ? "dark" : "dark");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="site-logo">
+          <img src="/rey-logo.png" alt="Rey" class="header-logo" />
+          Recursos Del Rey Rojo
+        </a>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          aria-label="Cambiar modo claro/oscuro"
+          title="Cambiar modo claro/oscuro"
+        >
+          <!-- Icono sol (modo claro) -->
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+          <!-- Icono luna (modo oscuro) -->
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; {new Date().getFullYear()} Recursos del Rey Rojo</p>
+        <div class="footer-links">
+          <a href="/privacidad">Pol&iacute;tica de Privacidad</a>
+          <a href="/aviso-legal">Aviso Legal</a>
+          <a href="/cookies">Pol&iacute;tica de Cookies</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Aviso "sin cookies" -->
+    <div class="cookie-notice" id="cookie-notice">
+      <p><strong>Esta web no te rastrea.</strong> Sin cookies, sin trackers, sin letra peque&ntilde;a. Navegas con tranquilidad.</p>
+      <div class="cookie-notice-buttons">
+        <button class="primary" id="cookie-ok">Así da gusto</button>
+      </div>
+    </div>
+
+    <script>
+      // Toggle tema
+      const toggle = document.getElementById("theme-toggle");
+      toggle?.addEventListener("click", () => {
+        const html = document.documentElement;
+        const current = html.getAttribute("data-theme");
+        const next = current === "light" ? "dark" : "light";
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+      });
+
+      // Cerrar aviso cookies
+      const notice = document.getElementById("cookie-notice");
+      const hideNotice = () => {
+        notice?.classList.add("hidden");
+        localStorage.setItem("cookies-notice-dismissed", "1");
+      };
+      if (localStorage.getItem("cookies-notice-dismissed")) {
+        notice?.classList.add("hidden");
+      }
+      document.getElementById("cookie-ok")?.addEventListener("click", hideNotice);
+    </script>
+  </body>
+</html>
