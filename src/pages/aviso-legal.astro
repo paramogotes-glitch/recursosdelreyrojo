@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SubscribeCTA from "../components/SubscribeCTA.astro";
 ---
 
 <Layout>
@@ -89,9 +90,9 @@ import Layout from "../layouts/Layout.astro";
 
     <p class="legal-date">&Uacute;ltima actualizaci&oacute;n: 1 de junio de 2026</p>
 
-    <div class="legal-cta">
-      <p class="legal-cta-text">&iquest;Has llegado hasta aqu&iacute;? Si te has le&iacute;do el aviso legal de principio a fin, esta web es para ti.</p>
-      <a href="/#suscribete" class="legal-cta-btn">Suscribirme a El Edicto Real</a>
-    </div>
+    <SubscribeCTA
+      ctaText="Si ya te le&iacute;ste esto y est&aacute;s m&aacute;s tranquilo, aqu&iacute; abajo te suscribes"
+      formId="aviso"
+    />
   </div>
 </Layout>

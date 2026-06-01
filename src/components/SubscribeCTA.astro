@@ -1,0 +1,290 @@
+---
+export interface Props {
+  ctaText: string;
+  formHeadline?: string;
+  buttonLabel?: string;
+  formId?: string;
+}
+
+const {
+  ctaText = "Suscribirme a El Edicto Real",
+  formHeadline = "Una vez dentro recibir&aacute;s <strong>El Edicto Real</strong> cada ma&ntilde;ana.",
+  buttonLabel = "Entrar al reino",
+  formId = "legal",
+} = Astro.props;
+---
+
+<div class="legal-cta">
+  <p class="legal-cta-text">{ctaText}</p>
+
+  <button class="btn-primary legal-cta-trigger" id="btn-legal-form-{formId}">
+    Suscribirme a El Edicto Real
+  </button>
+
+  <div class="legal-form-block form-collapsed" id="form-block-legal-{formId}">
+    <div class="legal-form-wrapper">
+      <p class="legal-form-headline" set:html={formHeadline} />
+
+      <form id="brevo-form-legal-{formId}" class="legal-subscribe-form">
+        <div class="legal-input-group">
+          <input
+            type="email"
+            id="email-legal-{formId}"
+            name="email"
+            placeholder="Escribe aqu&iacute; tu email"
+            required
+            autocomplete="email"
+          />
+          <button type="submit">{buttonLabel}</button>
+        </div>
+        <div class="legal-checkbox-group">
+          <input type="checkbox" id="privacy-legal-{formId}" name="privacy" required />
+          <label for="privacy-legal-{formId}">
+            Acepto la
+            <a href="/privacidad">pol&iacute;tica de privacidad</a> de
+            este Rey y recibir cada d&iacute;a El Edicto Real
+          </label>
+        </div>
+        <p class="legal-form-error" id="form-error-legal-{formId}"></p>
+      </form>
+
+      <div class="legal-form-success" id="form-success-legal-{formId}">
+        <h3>Revisa tu email</h3>
+        <p>
+          Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+        </p>
+      </div>
+
+      <p class="legal-form-note">
+        Esta suscripci&oacute;n es gratis, darse de baja tambi&eacute;n.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .legal-cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--bg-suave);
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .legal-cta-text {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+  }
+  .legal-cta .btn-primary {
+    display: inline-block;
+    background: var(--rojo);
+    color: #f5f5f5;
+    border: none;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .legal-cta .btn-primary:hover {
+    background: var(--rojo-hover);
+    transform: scale(1.03);
+  }
+  .legal-cta .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  /* Formulario expandible */
+  .form-collapsed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.4s ease;
+    margin: 0;
+  }
+  .form-expanded {
+    max-height: 9999px;
+    opacity: 1;
+    overflow: visible;
+    margin-top: 2rem;
+  }
+
+  .legal-form-wrapper {
+    background: var(--bg-suave);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+  .legal-form-headline {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin: 0 0 0.5rem;
+    color: var(--text-secondary);
+  }
+  .legal-form-headline strong {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .legal-input-group {
+    display: flex;
+    margin-top: 1rem;
+  }
+  .legal-input-group input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-right: none;
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .legal-input-group input:focus {
+    border-color: var(--rojo);
+  }
+  .legal-input-group button {
+    background: var(--rojo);
+    color: #f5f5f5;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .legal-input-group button:hover {
+    background: var(--rojo-hover);
+  }
+
+  .legal-checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    text-align: left;
+  }
+  .legal-checkbox-group input {
+    margin-top: 0.25rem;
+    accent-color: var(--rojo);
+  }
+  .legal-checkbox-group label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+  .legal-checkbox-group label a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+  }
+
+  .legal-form-note {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .legal-form-error {
+    color: var(--rojo);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    display: none;
+    text-align: left;
+  }
+  .legal-form-error.visible {
+    display: block;
+  }
+
+  .legal-form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .legal-form-success.visible {
+    display: block;
+  }
+  .legal-form-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  .legal-form-success p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .legal-input-group {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .legal-input-group input {
+      border-right: 1px solid var(--border);
+    }
+    .legal-input-group button {
+      width: 100%;
+    }
+    .legal-form-wrapper {
+      padding: 1.5rem;
+    }
+    .legal-form-wrapper h2 {
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  function setupLegalForm(id: string) {
+    const btn = document.getElementById(`btn-legal-form-${id}`);
+    const block = document.getElementById(`form-block-legal-${id}`);
+    const form = document.getElementById(`brevo-form-legal-${id}`) as HTMLFormElement | null;
+    const errorEl = document.getElementById(`form-error-legal-${id}`) as HTMLElement | null;
+    const successEl = document.getElementById(`form-success-legal-${id}`) as HTMLElement | null;
+
+    btn?.addEventListener("click", () => {
+      btn.style.display = "none";
+      block?.classList.remove("form-collapsed");
+      block?.classList.add("form-expanded");
+      document.getElementById(`email-legal-${id}`)?.focus();
+    });
+
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = (document.getElementById(`email-legal-${id}`) as HTMLInputElement).value.trim();
+      const privacy = (document.getElementById(`privacy-legal-${id}`) as HTMLInputElement).checked;
+
+      if (!email) {
+        if (errorEl) {
+          errorEl.textContent = "Escribe tu email.";
+          errorEl.classList.add("visible");
+        }
+        return;
+      }
+      if (!privacy) {
+        if (errorEl) {
+          errorEl.textContent = "Debes aceptar la política de privacidad.";
+          errorEl.classList.add("visible");
+        }
+        return;
+      }
+
+      if (errorEl) errorEl.classList.remove("visible");
+      form.style.display = "none";
+      const parent = form.parentElement;
+      const checkboxes = parent?.querySelector(".legal-checkbox-group") as HTMLElement | null;
+      if (checkboxes) checkboxes.style.display = "none";
+      if (successEl) successEl.classList.add("visible");
+    });
+  }
+
+  setupLegalForm("{formId}");
+</script>

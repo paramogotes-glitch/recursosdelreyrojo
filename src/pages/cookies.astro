@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SubscribeCTA from "../components/SubscribeCTA.astro";
 ---
 
 <Layout>
@@ -76,7 +77,7 @@ import Layout from "../layouts/Layout.astro";
     </p>
     <ul>
       <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" rel="noopener">Google Chrome</a></li>
-      <li><a href="https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank" rel="noopener">Mozilla Firefox</a></li>
       <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari (escritorio)</a></li>
       <li><a href="https://support.apple.com/es-es/HT201265" target="_blank" rel="noopener">Safari (m&oacute;vil)</a></li>
       <li><a href="https://help.opera.com/en/latest/web-preferences/" target="_blank" rel="noopener">Opera</a></li>
@@ -84,7 +85,7 @@ import Layout from "../layouts/Layout.astro";
     </ul>
     <p>
       Tambi&eacute;n puedes consultar la
-      <a href="https://www.aepd.es/sites/default/files/2019-12/guia-cookies_1.pdf" target="_blank" rel="noopener">Gu&iacute;a sobre el uso de cookies de la AEPD</a>
+      <a href="https://www.aepd.es/guias/guia-cookies.pdf" target="_blank" rel="noopener">Gu&iacute;a sobre el uso de cookies de la AEPD</a>
       para m&aacute;s informaci&oacute;n.
     </p>
 
@@ -98,9 +99,9 @@ import Layout from "../layouts/Layout.astro";
       notificar&aacute; a los suscriptores.
     </p>
 
-    <div class="legal-cta">
-      <p class="legal-cta-text">Si has llegado hasta el final de la pol&iacute;tica de cookies, hay un email diario esper&aacute;ndote.</p>
-      <a href="/#suscribete" class="legal-cta-btn">Suscribirme a El Edicto Real</a>
-    </div>
+    <SubscribeCTA
+      ctaText="Si te gust&oacute; que no use cookies, hay un email diario esper&aacute;ndote."
+      formId="cookies"
+    />
   </div>
 </Layout>
