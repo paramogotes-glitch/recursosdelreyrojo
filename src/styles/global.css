@@ -1,7 +1,7 @@
 /* === Recursos del Rey Rojo — Estilos globales === */
 
-/* Google Fonts: Bebas Neue (display) + Inter (body) */
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap");
+/* Fuentes self-hosteadas — sin peticiones externas, sin cookies de terceros */
+@import "./fonts.css";
 
 /* === Tema oscuro (por defecto) === */
 :root {
@@ -411,6 +411,40 @@ img {
 }
 .legal-page ul {
   margin-left: 1.5rem;
+}
+.legal-page .legal-date {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+}
+
+/* CTA en páginas legales */
+.legal-cta {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--bg-suave);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.legal-cta-text {
+  font-size: 1.1rem !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 1.25rem !important;
+}
+.legal-cta-btn {
+  display: inline-block;
+  background: var(--rojo);
+  color: #f5f5f5 !important;
+  padding: 0.85rem 2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.15s;
+}
+.legal-cta-btn:hover {
+  background: var(--rojo-hover);
+  transform: scale(1.03);
+  text-decoration: none;
 }
 
 /* === Pagina de gracias === */
