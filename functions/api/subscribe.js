@@ -135,7 +135,55 @@ export async function onRequest(context) {
     );
   }
 
-  // Éxito
+  // === Enviar email de doble opt-in (template #5) ===
+  const DOI_TEMPLATE_ID = 5; // "Plantilla de Confirmación de doble opt-in para el Edicto Real"
+  const CONFIRMATION_URL = "https://recursosdelreyrojo.com/dentro";
+
+  try {
+    const doiResponse = await fetch(
+      "https://api.brevo.com/v3/contacts/doubleOptinConfirmation",
+      {
+        method: "POST",
+        headers: {
+          "api-key": BREVO_API_KEY,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          templateId: DOI_TEMPLATE_ID,
+          redirectionUrl: CONFIRMATION_URL,
+        }),
+      }
+    );
+
+    if (!doiResponse.ok) {
+      const doiError = await doiResponse.json().catch(() => ({}));
+      return new Response(
+        JSON.stringify({
+          success: true,
+          warning: `Contacto creado pero el email de confirmación falló: ${doiError.message || doiResponse.status}`,
+        }),
+        {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+  } catch (_doiErr) {
+    return new Response(
+      JSON.stringify({
+        success: true,
+        warning: "Contacto creado pero el email de confirmación no se pudo enviar",
+      }),
+      {
+        status: 200,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      }
+    );
+  }
+
+  // Éxito completo: contacto creado + email de confirmación enviado
   return new Response(JSON.stringify({ success: true }), {
     status: 200,
     headers: { ...corsHeaders, "Content-Type": "application/json" },
