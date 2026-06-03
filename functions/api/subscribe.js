@@ -11,7 +11,6 @@
  */
 
 export async function onRequest(context) {
-  // CORS: solo aceptar desde el dominio propio
   const origin = context.request.headers.get("origin") || "";
   const allowedOrigins = [
     "https://recursosdelreyrojo.com",
@@ -38,32 +37,44 @@ export async function onRequest(context) {
     });
   }
 
+  // === Parsear body ===
+  let email;
   try {
     const body = await context.request.json();
-    const email = (body.email || "").trim().toLowerCase();
+    email = (body.email || "").trim().toLowerCase();
+  } catch (_parseErr) {
+    return new Response(JSON.stringify({ error: "Petición mal formada" }), {
+      status: 400,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
 
-    // Validación de email
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-      return new Response(JSON.stringify({ error: "Email inválido" }), {
-        status: 400,
+  // === Validación de email ===
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    return new Response(JSON.stringify({ error: "Email inválido" }), {
+      status: 400,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  // === Variables de entorno ===
+  const BREVO_API_KEY = context.env.BREVO_API_KEY;
+  const BREVO_LIST_ID = parseInt(context.env.BREVO_LIST_ID, 10) || 3;
+
+  if (!BREVO_API_KEY) {
+    return new Response(
+      JSON.stringify({ error: "Servicio no configurado — falta API key" }),
+      {
+        status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
+      }
+    );
+  }
 
-    const BREVO_API_KEY = context.env.BREVO_API_KEY;
-    const BREVO_LIST_ID = parseInt(context.env.BREVO_LIST_ID, 10) || 3;
-
-    if (!BREVO_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: "Servicio no configurado" }),
-        {
-          status: 500,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
-    }
-
-    const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
+  // === Llamada a Brevo ===
+  let brevoResponse;
+  try {
+    brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
         "api-key": BREVO_API_KEY,
@@ -76,41 +87,57 @@ export async function onRequest(context) {
         updateEnabled: true,
       }),
     });
+  } catch (_fetchErr) {
+    return new Response(JSON.stringify({ error: "No se pudo conectar con Brevo" }), {
+      status: 502,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
 
-    const brevoData = await brevoResponse.json();
-
-    if (!brevoResponse.ok) {
-      // Si el contacto ya existe, Brevo devuelve "Contact already exist"
-      // No es un error real — el contacto está en la lista
-      if (brevoData.code === "duplicate_parameter") {
-        return new Response(
-          JSON.stringify({ success: true, alreadyExists: true }),
-          {
-            status: 200,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          }
-        );
+  // === Parsear respuesta de Brevo ===
+  let brevoData;
+  try {
+    brevoData = await brevoResponse.json();
+  } catch (_jsonErr) {
+    return new Response(
+      JSON.stringify({
+        error: `Brevo respondió con estado ${brevoResponse.status} pero sin JSON válido`,
+      }),
+      {
+        status: 502,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
+    );
+  }
 
+  // === Manejar respuesta ===
+  if (!brevoResponse.ok) {
+    // Contacto ya existe — no es error real
+    if (brevoData.code === "duplicate_parameter") {
       return new Response(
-        JSON.stringify({
-          error: brevoData.message || "Error al suscribir",
-        }),
+        JSON.stringify({ success: true, alreadyExists: true }),
         {
-          status: brevoResponse.status,
+          status: 200,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         }
       );
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: "Error interno del servidor" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    // Otro error de Brevo
+    return new Response(
+      JSON.stringify({
+        error: brevoData.message || `Error de Brevo (${brevoResponse.status})`,
+      }),
+      {
+        status: brevoResponse.status,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      }
+    );
   }
+
+  // Éxito
+  return new Response(JSON.stringify({ success: true }), {
+    status: 200,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
 }
