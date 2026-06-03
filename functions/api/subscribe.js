@@ -1,14 +1,17 @@
 /**
- * Cloudflare Pages Function — Proxy a la API de Brevo
+ * Cloudflare Pages Function — Proxy a la API de Brevo (Double Opt-In)
  *
  * Recibe POST con { email } desde el frontend,
- * reenvía a POST https://api.brevo.com/v3/contacts
- * sin exponer la API key al cliente.
+ * envía email de confirmación vía POST /contacts/doubleOptinConfirmation.
+ * El contacto se añade a la lista solo cuando el usuario confirma.
  *
  * Variables de entorno requeridas en Cloudflare Pages:
  *   BREVO_API_KEY  — clave API v3 de Brevo
  *   BREVO_LIST_ID  — ID numérico de la lista (default: 3)
  */
+
+const DOI_TEMPLATE_ID = 5;
+const CONFIRMATION_URL = "https://recursosdelreyrojo.com/dentro";
 
 export async function onRequest(context) {
   const origin = context.request.headers.get("origin") || "";
@@ -71,37 +74,53 @@ export async function onRequest(context) {
     );
   }
 
-  // === Llamada a Brevo ===
-  let brevoResponse;
+  // === Enviar email de doble opt-in ===
+  // La API de Brevo envía el email de confirmación y añade el contacto
+  // a includeListIds automáticamente cuando el usuario hace clic en el enlace.
+  let doiResponse;
   try {
-    brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
-      method: "POST",
-      headers: {
-        "api-key": BREVO_API_KEY,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        listIds: [BREVO_LIST_ID],
-        updateEnabled: true,
-      }),
-    });
+    doiResponse = await fetch(
+      "https://api.brevo.com/v3/contacts/doubleOptinConfirmation",
+      {
+        method: "POST",
+        headers: {
+          "api-key": BREVO_API_KEY,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          templateId: DOI_TEMPLATE_ID,
+          redirectionUrl: CONFIRMATION_URL,
+          includeListIds: [BREVO_LIST_ID],
+        }),
+      }
+    );
   } catch (_fetchErr) {
-    return new Response(JSON.stringify({ error: "No se pudo conectar con Brevo" }), {
-      status: 502,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ error: "No se pudo conectar con Brevo" }),
+      {
+        status: 502,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      }
+    );
   }
 
-  // === Parsear respuesta de Brevo ===
-  let brevoData;
+  // === Parsear respuesta ===
+  let doiData;
   try {
-    brevoData = await brevoResponse.json();
+    doiData = await doiResponse.json();
   } catch (_jsonErr) {
+    // 201 suele devolver body vacío, no es error
+    if (doiResponse.ok) {
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
     return new Response(
       JSON.stringify({
-        error: `Brevo respondió con estado ${brevoResponse.status} pero sin JSON válido`,
+        error: `Brevo respondió con estado ${doiResponse.status}`,
       }),
       {
         status: 502,
@@ -110,32 +129,19 @@ export async function onRequest(context) {
     );
   }
 
-  // === Manejar respuesta ===
-  if (!brevoResponse.ok) {
-    // Contacto ya existe — no es error real
-    if (brevoData.code === "duplicate_parameter") {
-      return new Response(
-        JSON.stringify({ success: true, alreadyExists: true }),
-        {
-          status: 200,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
-    }
-
-    // Otro error de Brevo
+  if (!doiResponse.ok) {
     return new Response(
       JSON.stringify({
-        error: brevoData.message || `Error de Brevo (${brevoResponse.status})`,
+        error: doiData.message || `Error de Brevo (${doiResponse.status})`,
       }),
       {
-        status: brevoResponse.status,
+        status: doiResponse.status,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
     );
   }
 
-  // Éxito: contacto creado en la lista (single opt-in)
+  // Éxito: email de confirmación enviado
   return new Response(JSON.stringify({ success: true }), {
     status: 200,
     headers: { ...corsHeaders, "Content-Type": "application/json" },
