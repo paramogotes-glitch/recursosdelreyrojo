@@ -257,10 +257,12 @@ const {
       document.getElementById(`email-legal-${id}`)?.focus();
     });
 
-    form?.addEventListener("submit", (e) => {
+    form?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const email = (document.getElementById(`email-legal-${id}`) as HTMLInputElement).value.trim();
-      const privacy = (document.getElementById(`privacy-legal-${id}`) as HTMLInputElement).checked;
+      const emailInput = document.getElementById(`email-legal-${id}`) as HTMLInputElement;
+      const privacyCheck = document.getElementById(`privacy-legal-${id}`) as HTMLInputElement;
+      const email = emailInput.value.trim();
+      const privacy = privacyCheck.checked;
 
       if (!email) {
         if (errorEl) {
@@ -277,12 +279,51 @@ const {
         return;
       }
 
+      // Loading
+      const submitBtn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+      const originalBtnText = submitBtn?.textContent || "";
+      if (submitBtn) {
+        submitBtn.textContent = "Enviando…";
+        submitBtn.disabled = true;
+      }
       if (errorEl) errorEl.classList.remove("visible");
-      form.style.display = "none";
-      const parent = form.parentElement;
-      const checkboxes = parent?.querySelector(".legal-checkbox-group") as HTMLElement | null;
-      if (checkboxes) checkboxes.style.display = "none";
-      if (successEl) successEl.classList.add("visible");
+
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({ error: "Error de conexión" }));
+          if (errorEl) {
+            errorEl.textContent = data.error || "Error al conectar. Inténtalo de nuevo.";
+            errorEl.classList.add("visible");
+          }
+          if (submitBtn) {
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+          }
+          return;
+        }
+
+        // Éxito
+        form.style.display = "none";
+        const parent = form.parentElement;
+        const checkboxes = parent?.querySelector(".legal-checkbox-group") as HTMLElement | null;
+        if (checkboxes) checkboxes.style.display = "none";
+        if (successEl) successEl.classList.add("visible");
+      } catch (_err) {
+        if (errorEl) {
+          errorEl.textContent = "Error de conexión. Inténtalo de nuevo.";
+          errorEl.classList.add("visible");
+        }
+        if (submitBtn) {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        }
+      }
     });
   }
 

@@ -817,16 +817,18 @@ import Layout from "../layouts/Layout.astro";
     if (pair) pair.style.display = "none";
   }
 
-  // === Utilidad: validacion de formulario ===
+  // === Utilidad: envio real a Brevo via Cloudflare Function ===
   function setupForm(formId: string, emailId: string, privacyId: string, errorId: string, successId: string) {
     const form = document.getElementById(formId) as HTMLFormElement | null;
     const errorEl = document.getElementById(errorId) as HTMLElement | null;
     const successEl = document.getElementById(successId) as HTMLElement | null;
 
-    form?.addEventListener("submit", (e) => {
+    form?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const email = (document.getElementById(emailId) as HTMLInputElement).value.trim();
-      const privacy = (document.getElementById(privacyId) as HTMLInputElement).checked;
+      const emailInput = document.getElementById(emailId) as HTMLInputElement;
+      const privacyCheck = document.getElementById(privacyId) as HTMLInputElement;
+      const email = emailInput.value.trim();
+      const privacy = privacyCheck.checked;
 
       if (!email) {
         if (errorEl) {
@@ -843,12 +845,51 @@ import Layout from "../layouts/Layout.astro";
         return;
       }
 
+      // Loading
+      const submitBtn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+      const originalBtnText = submitBtn?.textContent || "";
+      if (submitBtn) {
+        submitBtn.textContent = "Enviando…";
+        submitBtn.disabled = true;
+      }
       if (errorEl) errorEl.classList.remove("visible");
-      form.style.display = "none";
-      const parent = form.parentElement;
-      const checkboxes = parent?.querySelector(".checkbox-group") as HTMLElement | null;
-      if (checkboxes) checkboxes.style.display = "none";
-      if (successEl) successEl.classList.add("visible");
+
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({ error: "Error de conexión" }));
+          if (errorEl) {
+            errorEl.textContent = data.error || "Error al conectar. Inténtalo de nuevo.";
+            errorEl.classList.add("visible");
+          }
+          if (submitBtn) {
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+          }
+          return;
+        }
+
+        // Éxito
+        form.style.display = "none";
+        const parent = form.parentElement;
+        const checkboxes = parent?.querySelector(".checkbox-group") as HTMLElement | null;
+        if (checkboxes) checkboxes.style.display = "none";
+        if (successEl) successEl.classList.add("visible");
+      } catch (_err) {
+        if (errorEl) {
+          errorEl.textContent = "Error de conexión. Inténtalo de nuevo.";
+          errorEl.classList.add("visible");
+        }
+        if (submitBtn) {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        }
+      }
     });
   }
 
