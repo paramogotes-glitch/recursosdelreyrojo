@@ -10,7 +10,7 @@
  *   BREVO_LIST_ID  — ID numérico de la lista (default: 3)
  */
 
-const DOI_TEMPLATE_ID = 5;
+const DOI_TEMPLATE_ID = 6;
 const CONFIRMATION_URL = "https://recursosdelreyrojo.com/dentro";
 
 export async function onRequest(context) {
