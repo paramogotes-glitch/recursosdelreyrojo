@@ -16,15 +16,13 @@ Verás, hay un problema que veo en todas partes.
 
 Tipos que saben hacer — programadores, consultores, dueños de agencias pequeñas, artesanos del diseño — que producen un trabajo impecable y luego no saben explicar lo que vale. Se bloquean. Se enredan. Sueltan frases genéricas que podrían ser de cualquiera. Y el mercado, que no perdona, los ignora.
 
-Mientras tanto, el vendehúmos de turno — ese que sabe menos pero se explica mejor — se lleva el cheque.
+Mientras tanto, el espabilado de turno — ese que sabe menos pero se explica mejor — se lleva el cheque.
 
-Esto no es un manual de copywriting. No tengo la verdad revelada y no me vas a ver usando palabras como "disruptivo" o "ecosistema de ventas" sin que me tiemble el pulso.
+Esto no es un manual de copywriting. No tengo la verdad revelada y no me vas a ver usando *palabrejos* como "disruptivo" o "ecosistema de ventas" sin que me tiemble el pulso.
 
-Esto son 5 técnicas. Cinco. Explicadas con ejemplos reales, sin paja y en castellano de la calle. Si aplicas una sola de ellas mañana, ya habrá valido la pena.
+Esto son 5 técnicas. Cinco. Explicadas con ejemplos reales y en castellano. Si aplicas una sola de ellas mañana, ya habrá valido la pena.
 
 Si no te sirve, lo borras y tan amigos.
-
-Palabra de Rey.
 
 ---
 
@@ -124,7 +122,7 @@ Pero tu cliente no habla ese idioma. Y cuando no se reconoce en lo que lee, asum
 
 **Por qué falla**
 
-Escribir bien y persuadir bien son cosas distintas. Escribir bien es hacerse entender. Persuadir bien es hacer que el otro se sienta comprendido. La primera apela al intelecto. La segunda apela a la identidad.
+Escribir bien y persuadir son cosas distintas. Escribir bien es hacerse entender. Persuadir es hacer que el otro se sienta comprendido. La primera apela al intelecto. La segunda apela a la identidad.
 
 Cuando un cliente lee tu copy y se encuentra a sí mismo — sus palabras exactas, sus quejas textuales, las frases que le dice a su pareja cuando vuelve frustrado a casa — ocurre algo. Antes de que le hayas vendido nada, ya confía en ti. Porque si sabes expresar su problema mejor de lo que él mismo puede, asume que también sabrás resolverlo.
 
@@ -138,11 +136,11 @@ No digas *"Optimizamos tu flujo de adquisición de clientes mediante inbound mar
 
 Di lo que tu cliente dice: *"Estoy harto de pasarme el día en LinkedIn mandando mensajes que nadie responde. Me siento un pesado. Y encima no entra un puto euro."*
 
-Eso segundo lo reconoce. Eso segundo es él.
+Eso segundo lo reconoce. Eso es él.
 
 **Haz esto hoy**
 
-Abre tres emails o mensajes de clientes reales. Subraya las frases textuales que usan para describir su problema. Apártalas. Esas frases son oro. Úsalas en tu próxima página de ventas, en tu próximo email, en tu próxima conversación. Cuando el cliente se lea a sí mismo en tu copy, la venta deja de ser tuya. Es suya.
+Abre tres emails o mensajes de clientes reales. Subraya las frases textuales que usan para describir su problema. Apártalas. Esas frases son pura munición. Úsalas en tu próxima página de ventas, en tu próximo email, en tu próxima conversación. Cuando el cliente se lea a sí mismo en tu copy, la venta deja de ser tuya.
 
 ---
 
@@ -180,20 +178,22 @@ Revisa tu contrato o tus condiciones de servicio. ¿Hay algo que un cliente razo
 
 ## Esto no termina aquí
 
-Estas cinco técnicas son un disparo. Un punto de partida. Pero el copywriting, la persuasión y el negocio digital no se aprenden en un PDF.
+Estas cinco técnicas son un disparo. Un punto de partida. Pero el copywriting, la persuasión y los negocios digitales no se aprenden en un PDF.
 
-Cada mañana me pongo la corona, abro el ordenador y escribo un email. En ese email hablo de esto: de cómo vender sin parecer un vendedor de coches usados, de cómo construir un negocio sin VC y sin postureo, de por qué el dinero es libertad y de por qué no hay nada de malo en querer ganarlo.
+Cada mañana me pongo la corona, abro el ordenador y escribo un email. 
 
-Sin humo. Sin capturas de Stripe falsas. Sin el disfraz corporativo que tanto odias.
+En ese email hablo de cómo vender, de como escribir para vender, de cómo construir un negocio sin capital, sin postureo, de por qué el dinero es libertad y de por qué no hay nada de malo en querer ganarlo.
 
-Se llama **El Edicto Real**. Y día que estás fuera, Edicto que te pierdes. Aquí no hay archivos, ni reenvíos, ni segundas oportunidades. Lo que publico un día no vuelve.
+Sin ñoñería. Sin capturas de Stripe falsas. Sin la típica apariencia corporativa.
+
+Se llama **El Edicto Real**.
+
+Cada Edicto que llega a tu bandeja es único. Lo que te mande un día, no vuelve, se pierde. Si no estas dentro no podrás conservarlo. No hay segunda oportunidad. 
+
+Es un suscripción gratis
 
 Si te ha servido este PDF, imagínate lo que harías con un disparo de criterio cada mañana antes del café.
 
-**Entra en la Corte.**
+Si te interesa solo tiene que entrar a a la corte en recursosdelreyrojo.com 
 
-[NdR: Aquí irá el enlace o formulario de suscripción directo]
-
----
-
-*Palabra de Rey.*
+*Rey.*
