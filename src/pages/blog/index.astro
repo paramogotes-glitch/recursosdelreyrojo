@@ -17,13 +17,6 @@ const posts = (await getCollection("blog"))
         ) : (
           posts.map((post) => (
             <article class="post-card">
-              <time datetime={post.data.pubDate.toISOString()}>
-                {post.data.pubDate.toLocaleDateString("es-ES", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
               <h2>
                 <a href={`/blog/${post.slug}`}>{post.data.title}</a>
               </h2>
