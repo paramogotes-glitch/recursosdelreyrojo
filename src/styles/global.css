@@ -274,7 +274,9 @@ img {
   border-top: 1px solid var(--border);
 }
 .post-card h2 {
+  font-family: var(--font-body);
   font-size: 1.8rem;
+  font-weight: 900;
   margin-bottom: 0.3rem;
 }
 .post-card h2 a {
@@ -303,7 +305,11 @@ img {
   margin-bottom: 2rem;
 }
 .article h1 {
+  font-family: var(--font-body);
   font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 .article time {
@@ -523,7 +529,11 @@ img {
     font-size: 0.75rem;
   }
   .article h1 {
+    font-family: var(--font-body);
     font-size: 2rem;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
   .blog-list h1 {
     font-family: var(--font-body);
@@ -533,7 +543,9 @@ img {
     letter-spacing: -0.02em;
   }
   .post-card h2 {
+    font-family: var(--font-body);
     font-size: 1.4rem;
+    font-weight: 900;
   }
   .footer-links {
     gap: 0.75rem;
