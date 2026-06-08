@@ -14,7 +14,6 @@
   --rojo: #c0392b;
   --rojo-hover: #a01d1d;
 
-  --font-display: "Bebas Neue", sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
 
@@ -57,7 +56,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
@@ -374,7 +373,7 @@ img {
   transition: var(--theme-transition);
 }
 .article-cta h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
 }
@@ -510,7 +509,7 @@ img {
   display: block;
 }
 .form-success h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 2rem;
   margin-bottom: 0.5rem;
   color: var(--text-primary);

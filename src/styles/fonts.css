@@ -1,14 +1,6 @@
 /* Fuentes self-hosteadas — sin peticiones a Google */
 
 @font-face {
-  font-family: 'Bebas Neue';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/bebas-neue-400.woff2') format('truetype');
-}
-
-@font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 300;
