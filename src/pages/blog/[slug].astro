@@ -4,13 +4,18 @@ import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return Promise.all(
+    posts.map(async (post) => {
+      const { Content } = await post.render();
+      return {
+        params: { slug: post.slug },
+        props: { post, Content },
+      };
+    })
+  );
 }
 
-const { post } = Astro.props;
+const { post, Content } = Astro.props;
 const { title } = post.data;
 ---
 
@@ -21,7 +26,7 @@ const { title } = post.data;
     </header>
 
     <div class="content">
-      {post.body}
+      <Content />
     </div>
 
     <div class="article-cta">
