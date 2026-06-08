@@ -30,43 +30,47 @@ const { title } = post.data;
     </div>
 
     <div class="article-cta">
-      <p class="article-cta-lead">
-        Cada d&iacute;a env&iacute;o un email contando algo como esto. Hay quien le gusta y hasta quien lo espera. Yo lo llamo&hellip;
-      </p>
-      <h2 class="article-cta-title">El Edicto Real</h2>
+      <div class="form-wrapper">
+        <p class="form-lead">
+          Cada d&iacute;a env&iacute;o un email contando algo como esto. Hay quien le gusta y hasta quien lo espera. Yo lo llamo&hellip;
+        </p>
 
-      <form id="article-subscribe" class="subscribe-form" onsubmit="return false">
-        <div class="input-group">
-          <input
-            type="email"
-            id="article-email"
-            name="email"
-            placeholder="Escribe aqu&iacute; tu email"
-            required
-            autocomplete="email"
-          />
-          <button type="submit">Me apunto</button>
-        </div>
-        <div class="checkbox-group">
-          <input type="checkbox" id="article-privacy" name="privacy" required />
-          <label for="article-privacy">
-            Acepto la
-            <a href="/privacidad">pol&iacute;tica de privacidad</a> y recibir cada d&iacute;a El Edicto Real
-          </label>
-        </div>
-        <p class="form-error" id="article-error"></p>
-      </form>
+        <h2 class="form-title-edicto">El Edicto Real</h2>
 
-      <div class="form-success" id="article-success">
-        <h3>Revisa tu email</h3>
-        <p>
-          Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+        <form id="article-subscribe" class="subscribe-form" onsubmit="return false">
+          <div class="input-group">
+            <input
+              type="email"
+              id="article-email"
+              name="email"
+              placeholder="Escribe aqu&iacute; tu email"
+              required
+              autocomplete="email"
+            />
+            <button type="submit">Me apunto</button>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="article-privacy" name="privacy" required />
+            <label for="article-privacy">
+              Acepto la
+              <a href="/privacidad">pol&iacute;tica de privacidad</a> de
+              este Rey y recibir cada d&iacute;a El Edicto Real
+            </label>
+          </div>
+          <p class="form-error" id="article-error"></p>
+        </form>
+
+        <div class="form-success" id="article-success">
+          <h3>Revisa tu email</h3>
+          <p>
+            Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+          </p>
+        </div>
+
+        <p class="form-note">
+          Esta suscripci&oacute;n es gratis, darse de baja tambi&eacute;n.
         </p>
       </div>
-
-      <p class="form-note">
-        Suscribirse es gratis, darse de baja tambi&eacute;n.
-      </p>
     </div>
   </article>
 </Layout>

@@ -362,53 +362,52 @@ img {
   color: var(--text-primary);
 }
 
-/* CTA al final del articulo */
+/* CTA al final del articulo — mismo diseno que la landing */
 .article-cta {
   margin-top: 3rem;
-  padding: 2rem;
+}
+.article-cta .form-wrapper {
   background: var(--bg-suave);
   border: 1px solid var(--border);
-  text-align: center;
+  padding: 2rem;
+  width: 100%;
   transition: var(--theme-transition);
 }
-.article-cta-lead {
+.article-cta .form-lead {
   color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
 }
-.article-cta-title {
+.article-cta .form-title-edicto {
   font-family: var(--font-body);
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
+  line-height: 0.9;
+  color: var(--rojo);
+  margin: 1rem 0 0.75rem;
 }
 .article-cta .subscribe-form {
-  max-width: 480px;
-  margin: 0 auto 1rem;
+  width: 100%;
 }
 .article-cta .input-group {
   display: flex;
-  gap: 0;
-  border: 1px solid var(--border);
-  transition: var(--theme-transition);
-}
-.article-cta .input-group:focus-within {
-  border-color: var(--rojo);
+  margin-top: 1rem;
 }
 .article-cta .input-group input {
   flex: 1;
   background: var(--bg);
+  border: 1px solid var(--border);
+  border-right: none;
   color: var(--text-primary);
-  border: none;
   padding: 0.75rem 1rem;
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  min-width: 0;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
 }
-.article-cta .input-group input::placeholder {
-  color: var(--text-muted);
+.article-cta .input-group input:focus {
+  border-color: var(--rojo);
 }
 .article-cta .input-group button {
   background: var(--rojo);
@@ -416,35 +415,37 @@ img {
   border: none;
   padding: 0.75rem 1.5rem;
   font-family: var(--font-body);
+  font-size: 1.125rem;
   font-weight: 600;
-  font-size: 0.95rem;
   cursor: pointer;
-  white-space: nowrap;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 .article-cta .input-group button:hover {
   background: var(--rojo-hover);
 }
 .article-cta .checkbox-group {
-  margin-top: 0.75rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
   gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  margin-top: 0.75rem;
 }
 .article-cta .checkbox-group input {
+  margin-top: 0.25rem;
   accent-color: var(--rojo);
 }
-.article-cta .checkbox-group a {
+.article-cta .checkbox-group label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.article-cta .checkbox-group label a {
   color: var(--text-secondary);
   text-decoration: underline;
 }
 .article-cta .form-error {
   color: var(--rojo);
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
   display: none;
 }
 .article-cta .form-error.visible {
@@ -455,20 +456,19 @@ img {
 }
 .article-cta .form-success.visible {
   display: block;
+  text-align: center;
+  padding: 2rem;
 }
 .article-cta .form-success h3 {
   font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
-}
-.article-cta .form-success p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  color: var(--text-primary);
 }
 .article-cta .form-note {
-  color: var(--text-muted);
-  font-size: 0.8rem;
   margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
 
 /* === Paginas legales === */
