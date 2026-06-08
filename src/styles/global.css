@@ -381,8 +381,8 @@ img {
 }
 .article-cta .form-title-edicto {
   font-family: var(--font-body);
-  font-size: 3rem;
-  font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 600;
   line-height: 0.9;
   color: var(--rojo);
   margin: 1rem 0 0.75rem;
