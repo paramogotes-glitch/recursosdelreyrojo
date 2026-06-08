@@ -30,12 +30,90 @@ const { title } = post.data;
     </div>
 
     <div class="article-cta">
-      <h3>No te pierdas ni un Edicto</h3>
-      <p>
-        Esto es una muestra de lo que recibes cada mañana. Copywriting, persuasion
-        y negocio digital sin humo, directo a tu bandeja.
+      <p class="article-cta-lead">
+        Cada d&iacute;a env&iacute;o un email contando algo como esto. Hay quien le gusta y hasta quien lo espera. Yo lo llamo&hellip;
       </p>
-      <a href="/#suscribirse">Suscribirse gratis</a>
+      <h2 class="article-cta-title">El Edicto Real</h2>
+
+      <form id="article-subscribe" class="subscribe-form" onsubmit="return false">
+        <div class="input-group">
+          <input
+            type="email"
+            id="article-email"
+            name="email"
+            placeholder="Escribe aqu&iacute; tu email"
+            required
+            autocomplete="email"
+          />
+          <button type="submit">Me apunto</button>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="article-privacy" name="privacy" required />
+          <label for="article-privacy">
+            Acepto la
+            <a href="/privacidad">pol&iacute;tica de privacidad</a> y recibir cada d&iacute;a El Edicto Real
+          </label>
+        </div>
+        <p class="form-error" id="article-error"></p>
+      </form>
+
+      <div class="form-success" id="article-success">
+        <h3>Revisa tu email</h3>
+        <p>
+          Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+        </p>
+      </div>
+
+      <p class="form-note">
+        Suscribirse es gratis, darse de baja tambi&eacute;n.
+      </p>
     </div>
   </article>
 </Layout>
+
+<script>
+  (function () {
+    const form = document.getElementById("article-subscribe") as HTMLFormElement | null;
+    const email = document.getElementById("article-email") as HTMLInputElement | null;
+    const privacy = document.getElementById("article-privacy") as HTMLInputElement | null;
+    const errorEl = document.getElementById("article-error") as HTMLElement | null;
+    const successEl = document.getElementById("article-success") as HTMLElement | null;
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form || !email || !privacy) return;
+
+      if (!privacy.checked) {
+        if (errorEl) { errorEl.textContent = "Tienes que aceptar la politica de privacidad."; errorEl.classList.add("visible"); }
+        return;
+      }
+      if (!email.value.trim()) {
+        if (errorEl) { errorEl.textContent = "Escribe tu email."; errorEl.classList.add("visible"); }
+        return;
+      }
+
+      const submitBtn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+      if (submitBtn) { submitBtn.textContent = "Enviando..."; submitBtn.disabled = true; }
+      if (errorEl) { errorEl.classList.remove("visible"); }
+
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email.value.trim() }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          if (errorEl) { errorEl.textContent = data.error || "Algo fallo. Prueba de nuevo."; errorEl.classList.add("visible"); }
+          if (submitBtn) { submitBtn.textContent = "Me apunto"; submitBtn.disabled = false; }
+          return;
+        }
+        form.style.display = "none";
+        if (successEl) { successEl.classList.add("visible"); }
+      } catch {
+        if (errorEl) { errorEl.textContent = "Error de conexion. Prueba de nuevo."; errorEl.classList.add("visible"); }
+        if (submitBtn) { submitBtn.textContent = "Me apunto"; submitBtn.disabled = false; }
+      }
+    });
+  })();
+</script>
