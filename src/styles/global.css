@@ -258,6 +258,7 @@ img {
   padding: 3rem 0;
 }
 .blog-list h1 {
+  font-family: var(--font-body);
   font-size: 3rem;
   margin-bottom: 2rem;
 }
@@ -522,6 +523,7 @@ img {
     font-size: 2rem;
   }
   .blog-list h1 {
+    font-family: var(--font-body);
     font-size: 2.2rem;
   }
   .post-card h2 {
