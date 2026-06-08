@@ -1,0 +1,54 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("blog"))
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+  return paginate(posts, { pageSize: 12 });
+}
+
+const { page } = Astro.props;
+---
+
+<Layout>
+  <div class="container">
+    <section class="blog-list">
+      <h1>Los Delirios de la Corte</h1>
+      {
+        page.data.length === 0 ? (
+          <p style="color: var(--gris-claro);">Aun no hay articulos publicados. Vuelve pronto.</p>
+        ) : (
+          page.data.map((post) => (
+            <article class="post-card">
+              <h2>
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h2>
+              <p>{post.data.description}</p>
+            </article>
+          ))
+        )
+      }
+      {
+        page.lastPage > 1 && (
+          <nav class="pagination">
+            {page.currentPage > 1 && (
+              <a href={page.currentPage === 2 ? "/blog" : `/blog/${page.currentPage - 1}`} class="btn-prev">
+                &larr; Anterior
+              </a>
+            )}
+            <span class="page-info">
+              {page.currentPage} de {page.lastPage}
+            </span>
+            {page.currentPage < page.lastPage && (
+              <a href={`/blog/${page.currentPage + 1}`} class="btn-next">
+                Siguiente &rarr;
+              </a>
+            )}
+          </nav>
+        )
+      }
+    </section>
+  </div>
+</Layout>

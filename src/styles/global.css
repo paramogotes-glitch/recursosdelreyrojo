@@ -290,6 +290,27 @@ img {
   font-size: 0.95rem;
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.pagination a {
+  color: var(--rojo);
+  font-weight: 600;
+}
+.pagination a:hover {
+  color: var(--rojo-hover);
+}
+.pagination .page-info {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 /* === Blog: articulo individual === */
 .article {
   padding: 3rem 0;
