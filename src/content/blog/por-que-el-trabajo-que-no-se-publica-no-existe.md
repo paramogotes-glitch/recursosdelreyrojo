@@ -29,9 +29,3 @@ Publicar no es un acto de valentía. Es un acto de inteligencia. El que publica 
 El mercado no castiga la imperfección. Castiga la invisibilidad.
 
 Pues eso.
-
----
-
-**En El Edicto Real escribo sobre esto todos los días: cómo dejar de ser el que nadie ve sin convertirte en el que nadie soporta. Entra si quieres: [recursosdelreyrojo.com](https://recursosdelreyrojo.com)**
-
-**Palabra de Rey**

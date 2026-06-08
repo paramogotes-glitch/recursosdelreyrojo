@@ -29,9 +29,3 @@ No es casualidad.
 Subir precios no es avaricia. Es un filtro. Los que se van porque "es muy caro" nunca fueron tus clientes. Los que se quedan llegan más comprometidos, te respetan más y obtienen mejores resultados. **El precio define con quién trabajas.** No cuánto ganas. Eso es consecuencia.
 
 En fin, que si estás rodeado de clientes que te regatean hasta el café, igual el problema no son ellos.
-
----
-
-**En El Edicto Real hablo de esto a diario: cómo cobrar lo que vales sin pedir perdón. Entra si quieres: [recursosdelreyrojo.com](https://recursosdelreyrojo.com)**
-
-**Palabra de Rey**

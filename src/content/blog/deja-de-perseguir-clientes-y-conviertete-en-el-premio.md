@@ -27,9 +27,3 @@ El orden es ese: **primero generas más demanda que oferta, luego te comportas c
 Cada vez que dices "no" a un cliente que no encaja, tu "sí" para el que sí encaja se revaloriza. Y cuando la postura está construida, la venta deja de ser una persecución y se convierte en una selección.
 
 Pues eso.
-
----
-
-**En El Edicto Real hablo de esto a diario: cómo vender sin perseguir, sin rebajas y sin perder la dignidad. Entra si quieres: [recursosdelreyrojo.com](https://recursosdelreyrojo.com)**
-
-**Palabra de Rey**

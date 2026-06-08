@@ -27,9 +27,3 @@ Cuando yo tenía el taller en Cuba, esto era automático. El cliente que llegaba
 **Es mejor no tener a nadie dentro que tener al que no puede mover un dedo.**
 
 Pues eso.
-
----
-
-**En El Edicto Real enseño a filtrar clientes sin perderlos por el camino. Entra si quieres: [recursosdelreyrojo.com](https://recursosdelreyrojo.com)**
-
-**Palabra de Rey**

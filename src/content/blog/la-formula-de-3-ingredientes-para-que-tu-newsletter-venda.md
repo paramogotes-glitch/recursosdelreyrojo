@@ -25,9 +25,3 @@ La verdad es que yo aprendí esto a hostias. Mis primeros emails eran puro conte
 **Un email que pide sin haber dado antes no vende. Roba.** Y el lector perdona muchas cosas, pero que le roben la atención sin pedir permiso no.
 
 En fin, que si haces las tres —entretenimiento, contenido, promoción— tienes una máquina. Si haces dos, tienes un pasatiempo. Y si haces una, tienes un problema.
-
----
-
-**El Edicto Real es mi newsletter diaria donde aplico exactamente esto. No es para todo el mundo. Pero igual es para ti. Entra si quieres: [recursosdelreyrojo.com](https://recursosdelreyrojo.com)**
-
-**Palabra de Rey**
