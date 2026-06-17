@@ -640,4 +640,14 @@ img {
   .legal-page {
     padding: 2.5rem 1.25rem;
   }
+  .article-cta .input-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .article-cta .input-group input {
+    border-right: 1px solid var(--border);
+  }
+  .article-cta .input-group button {
+    width: 100%;
+  }
 }
