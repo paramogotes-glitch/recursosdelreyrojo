@@ -313,7 +313,7 @@ img {
 
 /* === Blog: articulo individual === */
 .article {
-  padding: 3rem 0;
+  padding: 3rem 1.5rem;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -473,7 +473,7 @@ img {
 
 /* === Paginas legales === */
 .legal-page {
-  padding: 3rem 0;
+  padding: 3rem 1.5rem;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -633,5 +633,11 @@ img {
     right: 1rem;
     bottom: 1rem;
     max-width: none;
+  }
+  .article {
+    padding: 2.5rem 1.25rem;
+  }
+  .legal-page {
+    padding: 2.5rem 1.25rem;
   }
 }
