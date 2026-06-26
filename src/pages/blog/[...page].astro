@@ -16,6 +16,59 @@ const { page } = Astro.props;
   <div class="container">
     <section class="blog-list">
       <h1>Los Delirios de la Corte</h1>
+
+      <!-- ============================================================ -->
+      <!-- CAJA DE CONVERSIÓN — Blog listado                           -->
+      <!-- ============================================================ -->
+      <div class="blog-cta">
+        <div class="form-wrapper">
+          <p class="form-lead">
+            Para recibir un email cada d&iacute;a con alguna movida Real para
+            plantarle cara al mercado tienes que entrar en mi reino.
+          </p>
+
+          <p class="form-lead">
+            Si te gusta la idea, te apuntas aqu&iacute; abajo para recibir&hellip;
+          </p>
+
+          <p class="form-title-edicto"><strong>El Edicto Real</strong></p>
+
+          <form id="brevo-form-blog-list" class="subscribe-form">
+            <div class="input-group">
+              <input
+                type="email"
+                id="email-blog-list"
+                name="email"
+                placeholder="Escribe aqu&iacute; tu email"
+                required
+                autocomplete="email"
+              />
+              <button type="submit">Entrar en el reino</button>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="privacy-blog-list" name="privacy" required />
+              <label for="privacy-blog-list">
+                Acepto la
+                <a href="/privacidad">pol&iacute;tica de privacidad</a> de
+                este Rey y recibir cada d&iacute;a El Edicto Real
+              </label>
+            </div>
+            <p class="form-error" id="form-error-blog-list"></p>
+          </form>
+
+          <div class="form-success" id="form-success-blog-list">
+            <h3>Revisa tu email</h3>
+            <p>
+              Confirma la suscripci&oacute;n y empieza a recibir El Edicto Real.
+            </p>
+          </div>
+
+          <p class="form-note">
+            Esta suscripci&oacute;n es gratis, darse de baja tambi&eacute;n.
+          </p>
+        </div>
+      </div>
+
       {
         page.data.length === 0 ? (
           <p style="color: var(--gris-claro);">Aun no hay articulos publicados. Vuelve pronto.</p>
@@ -52,3 +105,233 @@ const { page } = Astro.props;
     </section>
   </div>
 </Layout>
+
+<style>
+  .blog-cta {
+    margin-bottom: 2.5rem;
+  }
+
+  .blog-cta .form-wrapper {
+    background: var(--bg-suave);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    width: 100%;
+    transition: var(--theme-transition);
+  }
+
+  .blog-cta .form-lead {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+
+  .blog-cta .form-title-edicto {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin: 0.75rem 0 0.75rem !important;
+    line-height: 1.7;
+  }
+
+  .blog-cta .form-title-edicto strong {
+    color: var(--rojo);
+    font-weight: 700;
+  }
+
+  .blog-cta .input-group {
+    display: flex;
+    margin-top: 1rem;
+  }
+
+  .blog-cta .input-group input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-right: none;
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .blog-cta .input-group input:focus {
+    border-color: var(--rojo);
+  }
+
+  .blog-cta .input-group button {
+    background: var(--rojo);
+    color: #f5f5f5;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .blog-cta .input-group button:hover {
+    background: var(--rojo-hover);
+  }
+
+  .blog-cta .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .blog-cta .checkbox-group input {
+    margin-top: 0.25rem;
+    accent-color: var(--rojo);
+  }
+
+  .blog-cta .checkbox-group label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .blog-cta .checkbox-group label a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+  }
+
+  .blog-cta .form-note {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .blog-cta .form-error {
+    color: var(--rojo);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    display: none;
+  }
+
+  .blog-cta .form-error.visible {
+    display: block;
+  }
+
+  .blog-cta .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .blog-cta .form-success.visible {
+    display: block;
+  }
+
+  .blog-cta .form-success h3 {
+    font-family: var(--font-body);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .blog-cta .form-success p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .blog-cta .input-group {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .blog-cta .input-group input {
+      border-right: 1px solid var(--border);
+    }
+
+    .blog-cta .input-group button {
+      width: 100%;
+    }
+
+    .blog-cta .form-wrapper {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  function setupBlogListForm() {
+    const form = document.getElementById("brevo-form-blog-list") as HTMLFormElement | null;
+    const errorEl = document.getElementById("form-error-blog-list") as HTMLElement | null;
+    const successEl = document.getElementById("form-success-blog-list") as HTMLElement | null;
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById("email-blog-list") as HTMLInputElement;
+      const privacyCheck = document.getElementById("privacy-blog-list") as HTMLInputElement;
+      const email = emailInput.value.trim();
+      const privacy = privacyCheck.checked;
+
+      if (!email) {
+        if (errorEl) {
+          errorEl.textContent = "Escribe tu email.";
+          errorEl.classList.add("visible");
+        }
+        return;
+      }
+      if (!privacy) {
+        if (errorEl) {
+          errorEl.textContent = "Debes aceptar la política de privacidad.";
+          errorEl.classList.add("visible");
+        }
+        return;
+      }
+
+      const submitBtn = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+      const originalBtnText = submitBtn?.textContent || "";
+      if (submitBtn) {
+        submitBtn.textContent = "Enviando…";
+        submitBtn.disabled = true;
+      }
+      if (errorEl) errorEl.classList.remove("visible");
+
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({ error: "Error de conexión" }));
+          if (errorEl) {
+            errorEl.textContent = data.error || "Error al conectar. Inténtalo de nuevo.";
+            errorEl.classList.add("visible");
+          }
+          if (submitBtn) {
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+          }
+          return;
+        }
+
+        // Éxito
+        form.style.display = "none";
+        const parent = form.parentElement;
+        const checkboxes = parent?.querySelector(".checkbox-group") as HTMLElement | null;
+        if (checkboxes) checkboxes.style.display = "none";
+        if (successEl) successEl.classList.add("visible");
+      } catch (_err) {
+        if (errorEl) {
+          errorEl.textContent = "Error de conexión. Inténtalo de nuevo.";
+          errorEl.classList.add("visible");
+        }
+        if (submitBtn) {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        }
+      }
+    });
+  }
+
+  setupBlogListForm();
+</script>
